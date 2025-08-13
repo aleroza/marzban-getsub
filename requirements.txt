@@ -1,0 +1,7 @@
+python-telegram-bot[webhooks,callback-data]
+dynaconf
+pyyaml
+python-dotenv
+marzban
+codenamize
+humanize

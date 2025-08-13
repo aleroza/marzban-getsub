@@ -1,0 +1,24 @@
+---
+# Panel URL. Mandatory
+PANEL_URL: "https://panel.some-service.org"
+
+SUPPORT_LINK: "https://t.me/some-service_support"
+# WEBHOOK_PORT: 8080
+# WEBHOOK_URL: https://getsub.some-service.org
+
+SUBSCRIPTION_OPTIONS:
+  - name: free
+    displayname: FREE
+    template_name: unlimit
+    reset_strategy: month
+    billing:
+      - billing_type: free
+
+  - name: month
+    displayname: Monthly
+    template_name: monthly
+    reset_strategy: month
+    billing:
+      - billing_type: stripe
+        price: 100
+        currency: "USD"
