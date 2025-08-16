@@ -1,21 +1,24 @@
 import asyncio
+import pprint
 from telegram.ext import (
     ApplicationBuilder,
     CommandHandler,
     CallbackQueryHandler,
     InvalidCallbackData,
 )
-import logging
-
 from getsub.config import settings
+
 from getsub.marzban_api import check_login
 from getsub.router import router
 from getsub.menu import start
 from getsub.utils import handle_invalid_button
 
+import logging
 logger = logging.getLogger(__name__)
 
 def main():
+    logger.warning("Current settings:\n%s", pprint.pformat(settings.to_dict(), indent=2, width=80))
+
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 
@@ -35,7 +38,7 @@ def main():
     
     logger.info("Starting the bot...")
 
-    if settings.get('WEBHOOK_URL'):
+    if settings.get("WEBHOOK_URL"):
         logger.warning(f"Running in webhook mode on {settings.WEBHOOK_URL}{settings.WEBHOOK_URL_PATH}")
         application.run_webhook(
             listen=settings.WEBHOOK_LISTEN,

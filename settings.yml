@@ -22,3 +22,6 @@ SUBSCRIPTION_OPTIONS:
       - billing_type: stripe
         price: 100
         currency: "USD"
+
+## Will redact sensitive configs in logs
+# REDACT_SECRETS: True

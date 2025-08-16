@@ -6,16 +6,16 @@ from getsub.config import settings
 
 logger = logging.getLogger(__name__)
 
-api = MarzbanAPI(base_url=settings.get('PANEL_URL'))
+api = MarzbanAPI(base_url=settings.PANEL_URL)
 
 token = MarzbanTokenCache(
     client=api,
-    username=settings.get('PANEL_USER'), password=settings.get('PANEL_PASSWORD'),
+    username=settings.PANEL_USER, password=settings.PANEL_PASSWORD,
     token_expire_minutes=1440  # DEFAULT VALUE (Optional argument)
 )
 
 def check_login():
-    token = api.get_token(username=settings.get('PANEL_USER'), password=settings.get('PANEL_PASSWORD'))
+    token = api.get_token(username=settings.PANEL_USER, password=settings.PANEL_PASSWORD)
     return token
 
 async def check_templates(templates: list):

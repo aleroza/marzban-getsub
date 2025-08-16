@@ -11,7 +11,7 @@ start_text="Выберите пункт меню:"
 start_keyboard_buttons = [
         [InlineKeyboardButton("Моя подписка", callback_data=["subscription"])],
     ]
-if settings.get('SUPPORT_LINK'):
+if settings.SUPPORT_LINK:
     start_keyboard_buttons += [[InlineKeyboardButton("Поддержка", url=settings.SUPPORT_LINK)]]
 
 async def start(update: Update, context: CallbackContext) -> None:
