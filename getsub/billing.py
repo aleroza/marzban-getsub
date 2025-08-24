@@ -22,10 +22,10 @@ async def billing(query) -> None:
             logger.error("Not implemented")
 
 async def billing_finalize(query, tg_uid, template_name, reset_strategy):
-    user = await get_subscription(generate_name(tg_uid), tg_uid)
+    user = await get_subscription(generate_name(tg_uid))
     if user:
         await prolong_user(user.username, template_name, reset_strategy)
     else:
-        await create_user_by_template(generate_name(tg_uid), tg_uid, template_name, reset_strategy)
+        await create_user_by_template(generate_name(tg_uid), template_name, reset_strategy)
 
     await sub_thanks(query)

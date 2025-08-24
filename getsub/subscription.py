@@ -15,7 +15,7 @@ sub_info_text = """\
 """
 
 async def sub_get_info(tg_uid: int, history: list):
-    user_sub = await get_subscription(generate_name(tg_uid), tg_uid)
+    user_sub = await get_subscription(generate_name(tg_uid))
     if user_sub:
 
         if user_sub.status == "active":

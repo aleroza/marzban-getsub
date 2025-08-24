@@ -8,7 +8,7 @@ from telegram.ext import (
 )
 from getsub.config import settings
 
-from getsub.marzban_api import check_login
+from getsub.marzban_api import marzban_check_login
 from getsub.router import router
 from getsub.menu import start
 from getsub.utils import handle_invalid_button
@@ -23,7 +23,8 @@ def main():
     asyncio.set_event_loop(loop)
 
     # run the login coroutine on that loop (do NOT use asyncio.run here)
-    loop.run_until_complete(check_login())
+    loop.run_until_complete(marzban_check_login())
+    # TODO: Add check if all user templates from SUBSCRIPTION_OPTIONS are exists
 
     application = (
         ApplicationBuilder()

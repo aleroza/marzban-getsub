@@ -1,6 +1,6 @@
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup, InputMediaPhoto, Update
 from telegram.ext import ContextTypes
-from codenamize import codenamize
+from getsub.codenamize import codenamize
 import humanize
 import datetime as dt
 
@@ -18,7 +18,8 @@ async def handle_errors(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
     await update.effective_message.edit_text(f"Простите, произошла ошибка 😕\nМы постараемся сами её решить, но вы можете написать нам в поддержку {settings.SUPPORT_LINK}")
 
 def generate_name(tg_uid: int) -> str:
-    return codenamize(str(tg_uid)+settings.TG_UID_SALT)
+    # probably 202805211600 combinations from patched codenamize
+    return codenamize(str(tg_uid)+settings.TG_UID_SALT, suffix=4)
 
 def humanize_usage(bytes_num) -> str:
     return humanize.naturalsize(bytes_num, binary=True, format="%.2f")
