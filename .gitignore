@@ -192,3 +192,5 @@ pyrightconfig.json
 
 # Ignore dynaconf secret files
 .secrets.*
+
+.conda
